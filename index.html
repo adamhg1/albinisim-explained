@@ -27,6 +27,55 @@
             background-color: #ffffff;
         }
 
+        /* ------------------ HOME LANDING SCREEN ------------------ */
+        #landing-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle at center, #fff2f4 0%, #ffffff 70%);
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .landing-title {
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -1px;
+            margin: 0 0 30px 0;
+            text-transform: uppercase;
+        }
+
+        .start-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 14px 32px;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(224, 74, 88, 0.2);
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .start-btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        /* ------------------ SYSTEM INTERFACE READER ------------------ */
+        #reader-screen {
+            display: none; /* Safely managed via script */
+        }
+
         header.sticky-nav {
             position: sticky;
             top: 0;
@@ -59,6 +108,12 @@
             gap: 15px;
         }
 
+        .chapter-indicator {
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--text-muted);
+        }
+
         .menu-dropdown {
             position: relative;
             display: inline-block;
@@ -80,7 +135,7 @@
             position: absolute;
             right: 0;
             background-color: #ffffff;
-            min-width: 240px;
+            min-width: 255px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.1);
             border: 2px solid var(--border-color);
             border-radius: 16px;
@@ -104,6 +159,20 @@
             color: var(--primary);
         }
 
+        .progress-bar-container {
+            width: 100%;
+            height: 4px;
+            background-color: var(--border-color);
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 11.11%;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        /* ------------------ CONTENT BLOCKS ------------------ */
         main.content-wrapper {
             max-width: 800px;
             margin: 0 auto;
@@ -112,10 +181,7 @@
         }
 
         .chapter-panel {
-            margin-bottom: 80px;
-            padding-top: 40px;
-            border-bottom: 2px dashed var(--border-color);
-            padding-bottom: 40px;
+            display: none;
         }
 
         .chapter-tag {
@@ -260,51 +326,37 @@
             color: var(--primary);
             font-weight: bold;
         }
-    </style>
-</head>
-<body>
 
-    <header class="sticky-nav">
-        <div class="nav-container">
-            <div class="nav-logo" onclick="window.scrollTo(0,0)">Albinism Guide</div>
-            <div class="nav-controls">
-                <div class="menu-dropdown">
-                    <button class="dropdown-btn" onclick="toggleDropdown()">Jump to Chapter ☰</button>
-                    <div class="dropdown-content" id="contents-menu">
-                        <a href="#ch1" onclick="toggleDropdown()">1. What is albinism?</a>
-                        <a href="#ch2" onclick="toggleDropdown()">2. How is it diagnosed?</a>
-                        <a href="#ch3" onclick="toggleDropdown()">3. How can a person get albinism?</a>
-                        <a href="#ch4" onclick="toggleDropdown()">4. Signs, symptoms and daily life</a>
-                        <a href="#ch5" onclick="toggleDropdown()">5. What treatment is there?</a>
-                        <a href="#ch6" onclick="toggleDropdown()">6. Looking after eyes & skin</a>
-                        <a href="#ch7" onclick="toggleDropdown()">7. Community & support</a>
-                        <a href="#ch8" onclick="toggleDropdown()">8. More interesting facts</a>
-                        <a href="#ch9" onclick="toggleDropdown()">9. Sources</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+        /* ------------------ FOOTER FLOW CONTROLS ------------------ */
+        footer.nav-footer {
+            margin-top: 60px;
+            padding-top: 25px;
+            border-top: 2px dashed var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    <main class="content-wrapper">
+        .prev-chapter-btn {
+            background: #ffffff;
+            border: 2px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .prev-chapter-btn:hover {
+            border-color: var(--text-muted);
+            color: var(--text-dark);
+        }
 
-        <!-- CHAPTER 1 -->
-        <div id="ch1" class="chapter-panel">
-            <div class="chapter-tag">Chapter 1</div>
-            <h1>What is albinism?</h1>
-            <p class="intro-text">Albinism is a group of genetic conditions where the body makes little or no melanin — the pigment that gives colour to your skin, hair and eyes.</p>
-            
-            <div class="image-container">
-                <div class="placeholder-box"><span>📷 Medical Visual Record Panel</span></div>
-                <div class="image-caption">Skin, hair and eyes are much lighter when the body makes very little melanin.</div>
-            </div>
-
-            <h2>It all comes down to melanin</h2>
-            <p>Melanin is the natural colouring made by special cells in your skin. It decides how dark your skin, hair and eyes are, and it also helps your eyes develop before you are born. When the body makes very little melanin, or none at all, those colours become much lighter. That is albinism.</p>
-            <p>Albinism is not a disease. You cannot catch it, it does not get worse over time, and it does not change how clever someone is.</p>
-
-            <h2>How common is it?</h2>
-            <p>About 1 in 17,000 to 20,000 people around the world have albinism. It happens in every ethnic group and in every country. In parts of Africa it is more common — roughly 1 in 4,000 people in southern Africa.</p>
-
-            <h2>The two main types</h2>
-            <div class="grid-2col">
+        .next-chapter-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
