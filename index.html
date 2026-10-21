@@ -27,8 +27,8 @@
             background-color: #ffffff;
         }
 
-        /* ------------------ HOME LANDING SCREEN ------------------ */
-        #landing {
+        /* ------------------ WELCOME LANDING TOP SCREEN ------------------ */
+        #home-landing {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -95,31 +95,36 @@
             text-decoration: none;
         }
 
+        nav.menu-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
         nav.menu-links a {
             color: var(--primary);
             text-decoration: none;
             font-weight: bold;
-            font-size: 14px;
-            margin-left: 15px;
+            font-size: 13px;
         }
 
         nav.menu-links a:hover {
             text-decoration: underline;
         }
 
-        /* ------------------ CONTENT BOARDS ------------------ */
+        /* ------------------ MAIN CONTINUOUS CONTENT ------------------ */
         main.content-wrapper {
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
             box-sizing: border-box;
         }
 
         .chapter-panel {
-            margin-bottom: 80px;
-            padding-top: 60px;
+            margin-bottom: 60px;
+            padding-top: 80px; /* Gives space when jumping via navbar */
             border-bottom: 2px dashed var(--border-color);
-            padding-bottom: 60px;
+            padding-bottom: 40px;
         }
 
         .chapter-tag {
@@ -150,7 +155,7 @@
             font-size: 24px;
             font-weight: 800;
             color: var(--text-dark);
-            margin-top: 40px;
+            margin-top: 35px;
             margin-bottom: 15px;
         }
 
@@ -250,6 +255,11 @@
             font-weight: 600;
             font-size: 15px;
         }
+        .source-item:hover {
+            background-color: var(--bg-light);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
 
         .placeholder-box {
             width: 100%;
@@ -268,8 +278,8 @@
 </head>
 <body>
 
-    <!-- HOME LANDING SCREEN -->
-    <div id="landing">
+    <!-- WELCOME LANDING SCREEN -->
+    <div id="home-landing">
         <h1 class="landing-title">Albinism</h1>
         <a href="#ch1" class="start-btn">Start reading &rarr;</a>
     </div>
@@ -277,7 +287,7 @@
     <!-- STICKY NAVBAR -->
     <header class="sticky-nav">
         <div class="nav-container">
-            <a href="#landing" class="nav-logo">Albinism Guide</a>
+            <a href="#home-landing" class="nav-logo">Albinism Guide</a>
             <nav class="menu-links">
                 <a href="#ch1">Ch 1</a>
                 <a href="#ch2">Ch 2</a>
@@ -312,7 +322,3 @@
             <h2>How common is it?</h2>
             <p>About 1 in 17,000 to 20,000 people around the world have albinism. It happens in every ethnic group and in every country. In parts of Africa it is more common — roughly 1 in 4,000 people in southern Africa.</p>
 
-            <h2>The two main types</h2>
-            <div class="grid-2col">
-                <div class="content-card">
-                    <h3 style="color:var(--primary); margin-top:0;">Oculocutaneous albinism (OCA)</h3>
