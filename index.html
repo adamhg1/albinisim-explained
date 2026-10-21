@@ -16,6 +16,8 @@
 
         html {
             scroll-behavior: smooth;
+            height: auto;
+            overflow-y: auto;
         }
 
         body {
@@ -25,9 +27,11 @@
             padding: 0;
             color: #4a4a4a;
             background-color: #ffffff;
+            height: auto;
+            overflow-x: hidden;
         }
 
-        /* ------------------ WELCOME LANDING TOP SCREEN ------------------ */
+        /* ------------------ HOME LANDING TOP SCREEN ------------------ */
         #home-landing {
             display: flex;
             flex-direction: column;
@@ -73,10 +77,10 @@
         header.sticky-nav {
             position: sticky;
             top: 0;
-            z-index: 100;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.98);
             border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
 
         .nav-container {
@@ -85,7 +89,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 20px;
+            padding: 14px 20px;
         }
 
         .nav-logo {
@@ -98,22 +102,25 @@
         nav.menu-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
         }
 
         nav.menu-links a {
             color: var(--primary);
             text-decoration: none;
             font-weight: bold;
-            font-size: 13px;
+            font-size: 14px;
+            transition: color 0.2s;
         }
 
         nav.menu-links a:hover {
             text-decoration: underline;
+            color: var(--primary-hover);
         }
 
-        /* ------------------ MAIN CONTINUOUS CONTENT ------------------ */
-        main.content-wrapper {
+        /* ------------------ MAIN CONTENT PACKS ------------------ */
+        .page-container {
+            width: 100%;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
@@ -121,10 +128,11 @@
         }
 
         .chapter-panel {
-            margin-bottom: 60px;
-            padding-top: 80px; /* Gives space when jumping via navbar */
+            margin-bottom: 50px;
+            padding-top: 90px; /* Buffer protection for sticky nav header */
             border-bottom: 2px dashed var(--border-color);
-            padding-bottom: 40px;
+            padding-bottom: 50px;
+            display: block !important; /* Forces layout to remain active */
         }
 
         .chapter-tag {
@@ -180,7 +188,7 @@
             background: #ffffff;
             border: 2px solid #fff0f1;
             border-radius: 16px;
-            padding: 12px;
+            padding: 15px;
             margin: 25px 0;
             box-shadow: 0 4px 12px rgba(224, 74, 88, 0.04);
         }
@@ -199,7 +207,6 @@
             border-radius: 16px;
             padding: 20px;
             margin: 25px 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.01);
         }
 
         .content-card {
@@ -254,6 +261,7 @@
             color: var(--text-dark);
             font-weight: 600;
             font-size: 15px;
+            transition: all 0.2s;
         }
         .source-item:hover {
             background-color: var(--bg-light);
@@ -261,11 +269,11 @@
             color: var(--primary);
         }
 
-        .placeholder-box {
+        .image-frame-placeholder {
             width: 100%;
-            height: 200px;
+            height: 240px;
             background-color: var(--bg-light);
-            border: 2px dashed var(--primary);
+            border: 2px dashed rgba(224, 74, 88, 0.4);
             border-radius: 12px;
             display: flex;
             flex-direction: column;
@@ -273,6 +281,7 @@
             align-items: center;
             color: var(--primary);
             font-weight: bold;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -302,7 +311,7 @@
         </div>
     </header>
 
-    <main class="content-wrapper">
+    <div class="page-container">
 
         <!-- CHAPTER 1 -->
         <div id="ch1" class="chapter-panel">
@@ -311,14 +320,11 @@
             <p class="intro-text">Albinism is a group of genetic conditions where the body makes little or no melanin — the pigment that gives colour to your skin, hair and eyes.</p>
             
             <div class="image-container">
-                <div class="placeholder-box"><span>📷 Medical Visual Record Panel</span></div>
+                <div class="image-frame-placeholder">
+                    <span>📷 Figure 1.1: Melanin Expression Model</span>
+                </div>
                 <div class="image-caption">Skin, hair and eyes are much lighter when the body makes very little melanin.</div>
             </div>
 
             <h2>It all comes down to melanin</h2>
             <p>Melanin is the natural colouring made by special cells in your skin. It decides how dark your skin, hair and eyes are, and it also helps your eyes develop before you are born. When the body makes very little melanin, or none at all, those colours become much lighter. That is albinism.</p>
-            <p>Albinism is not a disease. You cannot catch it, it does not get worse over time, and it does not change how clever someone is.</p>
-
-            <h2>How common is it?</h2>
-            <p>About 1 in 17,000 to 20,000 people around the world have albinism. It happens in every ethnic group and in every country. In parts of Africa it is more common — roughly 1 in 4,000 people in southern Africa.</p>
-
