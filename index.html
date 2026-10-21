@@ -14,7 +14,7 @@
             color: #333333;
             background-color: #ffffff;
         }
-        /* TOP SCREEN HOME PANEL */
+        /* WELCOME LANDING SCREEN */
         .home-screen {
             display: flex;
             flex-direction: column;
@@ -52,7 +52,7 @@
             background-color: #c93b48;
             transform: translateY(-2px);
         }
-        /* FIXED BAR TOP SHORTCUTS */
+        /* STICKY NAVBAR */
         .navbar {
             position: sticky;
             top: 0;
@@ -71,7 +71,7 @@
             font-size: 13px;
         }
         .navbar a:hover { text-decoration: underline; }
-        /* CONTAINER LAYOUT FLOW */
+        /* CONTAINER LAYOUT */
         .main-container {
             max-width: 740px;
             margin: 0 auto;
@@ -94,22 +94,24 @@
         h2 { color: #1a1a1a; font-size: 24px; margin-top: 35px; font-weight: 700; }
         h3 { color: #e04a58; font-size: 18px; margin-top: 20px; font-weight: 700; }
         .intro { font-size: 19px; color: #555555; font-weight: 300; margin-bottom: 25px; }
-        /* NATIVE INFOGRAPHIC AND IMAGE CARDS */
-        .visual-display-card {
-            border: 2px dashed #e04a58;
+        /* IMAGES & CARDS */
+        .image-card {
+            border: 2px solid #fff0f1;
             border-radius: 16px;
-            padding: 30px 20px;
+            padding: 12px;
             margin: 25px 0;
-            background: #fff5f6;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(224, 74, 88, 0.04);
             text-align: center;
-            color: #e04a58;
         }
-        .visual-display-card strong {
-            font-size: 18px;
-            display: block;
-            margin-bottom: 5px;
+        .project-img {
+            width: 100%;
+            height: auto;
+            max-height: 380px;
+            object-fit: cover;
+            border-radius: 12px;
         }
-        .caption { font-size: 13px; color: #666666; margin-top: 15px; }
+        .caption { font-size: 13px; color: #666666; margin-top: 10px; }
         .pink-box {
             background-color: #fff5f6;
             border-left: 4px solid #e04a58;
@@ -138,7 +140,7 @@
 </head>
 <body>
 
-    <!-- WELCOME SCREEN -->
+    <!-- HOME SCREEN -->
     <div id="home" class="home-screen">
         <h1 class="landing-title">Albinism</h1>
         <a href="#ch1" class="start-btn">Start reading &rarr;</a>
@@ -166,9 +168,8 @@
             <h1>What is albinism?</h1>
             <p class="intro">Albinism is a group of genetic conditions where the body makes little or no melanin — the pigment that gives colour to your skin, hair and eyes.</p>
             
-            <div class="visual-display-card">
-                <strong>📷 Reference Image Panel: Melanin Differences</strong>
-                <span>Visual Documentation Room Slot</span>
+            <div class="image-card">
+                <img src="https://wikimedia.org" alt="A child with albinism" class="project-img">
                 <div class="caption">Skin, hair, and eyes are much lighter when the body makes very little melanin.</div>
             </div>
 
@@ -191,8 +192,8 @@
                 </div>
             </div>
 
-            <h2>Skin Structure Layers Diagram</h2>
-            <div class="content-card">
+            <h2>Skin Structure Layers</h2>
+            <div class="image-card">
                 <svg viewBox="0 0 440 264" style="display: block; width: 100%; height: auto; margin:0 auto;">
                     <rect x="20" y="16" width="400" height="54" rx="20" fill="#FFF1F3" stroke="#2D3142" stroke-width="3" />
                     <text x="42" y="50" font-family="sans-serif" font-size="16" font-weight="700" fill="#2D3142">Top layer of the skin</text>
@@ -202,7 +203,7 @@
                     <rect x="20" y="190" width="400" height="54" rx="20" fill="#FFC1CC" stroke="#2D3142" stroke-width="3" />
                     <text x="42" y="224" font-family="sans-serif" font-size="16" font-weight="700" fill="#2D3142">Deeper layers of the skin</text>
                 </svg>
-                <div class="caption" style="text-align: center;">Melanin is made in the middle layer of the skin. Less melanin means paler skin, hair and eyes.</div>
+                <div class="caption">Melanin is made in the middle layer of the skin. Less melanin means paler skin, hair and eyes.</div>
             </div>
 
             <div class="pink-box">
@@ -217,10 +218,9 @@
             <h1>How is albinism diagnosed?</h1>
             <p class="intro">Albinism is usually noticed very early — often the moment a baby is born.</p>
 
-            <div class="visual-display-card">
-                <strong>📷 Reference Image Panel: Medical Eye Examination</strong>
-                <span>Diagnostic Equipment Assessment Slot</span>
-                <div class="caption">A specialist evaluates visual reflex pathways and involuntary movements.</div>
+            <div class="image-card">
+                <img src="https://wikimedia.org" alt="Eye examination" class="project-img">
+                <div class="caption">A doctor checking a patient's visual reflexes using a slit lamp microscope.</div>
             </div>
 
             <h2>First, somebody notices</h2>
