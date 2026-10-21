@@ -3,160 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How is Albinism Diagnosed?</title>
+    <title>Understanding Albinism</title>
     <style>
+        :root {
+            --primary: #e04a58;
+            --primary-hover: #c93b48;
+            --bg-light: #fff5f6;
+            --text-dark: #1a1a1a;
+            --text-muted: #666666;
+            --border-color: #f0f0f0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
             color: #4a4a4a;
             background-color: #ffffff;
         }
-        .header-bar {
+
+        /* ------------------ LANDING PAGE ------------------ */
+        #landing-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle at center, #fff2f4 0%, #ffffff 70%);
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .landing-title {
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -1px;
+            margin: 0 0 30px 0;
+            text-transform: uppercase;
+        }
+
+        .start-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 14px 32px;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(224, 74, 88, 0.2);
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .start-btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        /* ------------------ READER SYSTEM INTERFACE ------------------ */
+        #reader-screen {
+            display: none; /* Controlled via script */
+        }
+
+        header.sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 800px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 4px solid #e04a58;
-            padding-bottom: 10px;
-            margin-bottom: 25px;
+            padding: 12px 20px;
         }
-        .logo {
-            font-size: 24px;
+
+        .nav-logo {
+            font-size: 22px;
             font-weight: bold;
-            color: #e04a58;
+            color: var(--primary);
+            text-decoration: none;
+            cursor: pointer;
         }
-        .chapter {
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .chapter-indicator {
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--text-muted);
+        }
+
+        .menu-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            background-color: #ffffff;
+            border: 2px solid rgba(224, 74, 88, 0.4);
+            color: var(--primary);
+            font-weight: bold;
+            padding: 6px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #ffffff;
+            min-width: 200px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            z-index: 101;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: var(--text-dark);
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--bg-light);
+            color: var(--primary);
+        }
+
+        /* Progress tracker line */
+        .progress-bar-container {
+            width: 100%;
+            height: 4px;
+            background-color: var(--border-color);
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 11.11%;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        /* ------------------ CONTENT CONTAINER ------------------ */
+        main.content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        .chapter-panel {
+            display: none; /* Display managed sequentially via JavaScript code system */
+        }
+
+        .chapter-tag {
             font-size: 12px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: #e04a58;
+            color: var(--primary);
             margin-bottom: 5px;
         }
+
         h1 {
             font-size: 36px;
             font-weight: 800;
-            color: #1a1a1a;
+            color: var(--text-dark);
             margin-top: 0;
             margin-bottom: 20px;
         }
+
         .intro-text {
             font-size: 20px;
-            color: #666666;
+            color: var(--text-muted);
             font-weight: 300;
             margin-bottom: 30px;
         }
+
         h2 {
-            font-size: 22px;
-            color: #1a1a1a;
-            margin-top: 30px;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 8px;
-        }
-        .step-list {
-            list-style: none;
-            padding: 0;
-        }
-        .step-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-top: 40px;
             margin-bottom: 15px;
         }
-        .step-number {
-            display: flex;
-            height: 32px;
-            width: 32px;
-            flex: none;
-            items-center: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: #e04a58;
-            color: white;
-            font-weight: bold;
-            line-height: 32px;
-            text-align: center;
-        }
-        .step-text {
-            padding-top: 4px;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
+
+        h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 25px;
             margin-bottom: 10px;
         }
+
+        p {
+            font-size: 16px;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+
+        /* Subgrids / Split features layout blocks */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        @media (max-width: 600px) {
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+
+        /* ------------------ THEME STYLING STRUCTURE BLOCKS ------------------ */
+        .image-container {
+            background: #ffffff;
+            border: 2px solid #fff0f1;
+            border-radius: 16px;
+            padding: 12px;
+            margin: 25px 0;
+            box-shadow: 0 4px 12px rgba(224, 74, 88, 0.04);
+        }
+
+        .project-image {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .image-caption {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 10px;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .diagram-container {
+            background: #ffffff;
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+        }
+
+        .content-card {
+            background: #ffffff;
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
         .callout-box {
-            background-color: #fff5f6;
-            border-left: 4px solid #e04a58;
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--primary);
             padding: 20px;
             border-radius: 4px;
-            margin-top: 40px;
+            margin: 30px 0;
         }
+
         .callout-title {
             font-weight: bold;
-            color: #e04a58;
+            color: var(--primary);
             margin-bottom: 5px;
+            font-size: 15px;
         }
-    </style>
-</head>
-<body>
 
-    <div class="header-bar">
-        <div class="logo">Albinism</div>
-    </div>
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
 
-    <div class="chapter">Chapter 2</div>
-    <h1>How is albinism diagnosed?</h1>
-    
-    <p class="intro-text">
-        Albinism is usually noticed very early — often the moment a baby is born.
-    </p>
+        li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
 
-    <h2>First, somebody notices</h2>
-    <p>Newborns with albinism often have very pale skin, white or very light hair, and light-coloured eyes. A nurse or a doctor may spot it during the first check-up.</p>
-    <p>Sometimes it is less obvious at first, especially if the baby's colouring is similar to the rest of the family's. Then it may be noticed later, when a child keeps holding books close to their face or complains about bright light.</p>
+        /* Step counter loops */
+        .step-list { list-style: none; padding: 0; }
+        .step-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px; }
+        .step-number {
+            display: flex; height: 28px; width: 28px; flex: none; align-items: center; justify-content: center;
+            border-radius: 50%; background-color: var(--primary); color: white; font-weight: bold; font-size: 14px;
+        }
 
-    <h2>What usually happens, step by step</h2>
-    <ol class="step-list">
-        <li class="step-item">
-            <div class="step-number">1</div>
-            <div class="step-text">A doctor looks closely at the baby's skin, hair and eyes.</div>
-        </li>
-        <li class="step-item">
-            <div class="step-number">2</div>
-            <div class="step-text">The baby is usually sent to an eye doctor (an ophthalmologist), who looks inside the eyes and checks how well the baby sees.</div>
-        </li>
-        <li class="step-item">
-            <div class="step-number">3</div>
-            <div class="step-text">Small sticky pads may be placed on the scalp to test how the eyes send signals to the brain. It does not hurt.</div>
-        </li>
-        <li class="step-item">
-            <div class="step-number">4</div>
-            <div class="step-text">A DNA test can show which type of albinism it is, and which gene is involved.</div>
-        </li>
-        <li class="step-item">
-            <div class="step-number">5</div>
-            <div class="step-text">Families can talk to a genetic counsellor about what it means for other children they may have.</div>
-        </li>
-    </ol>
+        /* Resource lists grid layout */
+        .source-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .source-item:hover {
+            border-color: rgba(224, 74, 88, 0.3);
+            background-color: var(--bg-light);
+            color: var(--primary);
+        }
 
-    <h2>What the eye doctor looks for</h2>
-    <ul>
-        <li>Quick side-to-side eye movements that the person cannot control (nystagmus)</li>
-        <li>Eyes that point in different directions (a squint)</li>
-        <li>An iris that is very pale and lets light through</li>
-        <li>Eyes that are sensitive to light</li>
-        <li>The retina — the back of the eye — not developing completely</li>
-        <li>Blurry vision that glasses alone cannot fully fix</li>
-    </ul>
+        /* ------------------ BOTTOM FOOTER NAV CONTROLS ------------------ */
+        footer.nav-footer {
+            margin-top: 60px;
+            padding-top: 25px;
+            border-top: 2px dashed var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    <div class="callout-box">
-        <div class="callout-title">Nobody did anything wrong</div>
-        <p>Albinism is not caused by anything a parent did before or during pregnancy. It is not caused by food, weather, illness or anything in the environment.</p>
-    </div>
-
-</body>
-</html>
+        .prev-chapter-btn {
+            background: #ffffff;
+            border: 2px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 10px 20px;
