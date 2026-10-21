@@ -5,326 +5,209 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Understanding Albinism</title>
     <style>
-        :root {
-            --primary: #e04a58;
-            --primary-hover: #c93b48;
-            --bg-light: #fff5f6;
-            --text-dark: #1a1a1a;
-            --text-muted: #666666;
-            --border-color: #f0f0f0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            height: auto;
-            overflow-y: auto;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: system-ui, -apple-system, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            color: #4a4a4a;
+            color: #333333;
             background-color: #ffffff;
-            height: auto;
-            overflow-x: hidden;
         }
-
-        /* ------------------ HOME LANDING TOP SCREEN ------------------ */
-        #home-landing {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: radial-gradient(circle at center, #fff2f4 0%, #ffffff 70%);
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .landing-title {
-            font-size: 72px;
-            font-weight: 900;
-            color: var(--primary);
-            letter-spacing: -1px;
-            margin: 0 0 30px 0;
-            text-transform: uppercase;
-        }
-
-        .start-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: var(--primary);
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 14px 32px;
-            border-radius: 50px;
-            box-shadow: 0 10px 20px rgba(224, 74, 88, 0.2);
-            transition: transform 0.2s, background-color 0.2s;
-        }
-
-        .start-btn:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
-        }
-
-        /* ------------------ STICKY NAVBAR ------------------ */
-        header.sticky-nav {
+        .navbar {
             position: sticky;
             top: 0;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.98);
-            border-bottom: 2px solid var(--border-color);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-        }
-
-        .nav-container {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 20px;
-        }
-
-        .nav-logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        nav.menu-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        nav.menu-links a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-
-        nav.menu-links a:hover {
-            text-decoration: underline;
-            color: var(--primary-hover);
-        }
-
-        /* ------------------ MAIN CONTENT PACKS ------------------ */
-        .page-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .chapter-panel {
-            margin-bottom: 50px;
-            padding-top: 90px; /* Buffer protection for sticky nav header */
-            border-bottom: 2px dashed var(--border-color);
-            padding-bottom: 50px;
-            display: block !important; /* Forces layout to remain active */
-        }
-
-        .chapter-tag {
-            font-size: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        h1 {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-        .intro-text {
-            font-size: 20px;
-            color: var(--text-muted);
-            font-weight: 300;
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-top: 35px;
-            margin-bottom: 15px;
-        }
-
-        p {
-            font-size: 16px;
-            color: #4a4a4a;
-            margin-bottom: 20px;
-        }
-
-        .grid-2col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 25px 0;
-        }
-
-        @media (max-width: 600px) {
-            .grid-2col { grid-template-columns: 1fr; }
-        }
-
-        .image-container {
-            background: #ffffff;
-            border: 2px solid #fff0f1;
-            border-radius: 16px;
+            background: #fff5f6;
+            border-bottom: 2px solid #e04a58;
             padding: 15px;
-            margin: 25px 0;
-            box-shadow: 0 4px 12px rgba(224, 74, 88, 0.04);
-        }
-
-        .image-caption {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-top: 10px;
-            line-height: 1.4;
             text-align: center;
+            z-index: 1000;
         }
-
-        .diagram-container {
-            background: #ffffff;
-            border: 2px solid var(--border-color);
-            border-radius: 16px;
-            padding: 20px;
-            margin: 25px 0;
-        }
-
-        .content-card {
-            background: #ffffff;
-            border: 2px solid var(--border-color);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-        }
-
-        .callout-box {
-            background-color: var(--bg-light);
-            border-left: 4px solid var(--primary);
-            padding: 20px;
-            border-radius: 4px;
-            margin: 30px 0;
-        }
-
-        .callout-title {
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 5px;
-            font-size: 15px;
-        }
-
-        ul, ol {
-            padding-left: 20px;
-            margin-bottom: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-
-        .step-list { list-style: none; padding: 0; }
-        .step-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px; }
-        .step-number {
-            display: flex; height: 28px; width: 28px; flex: none; align-items: center; justify-content: center;
-            border-radius: 50%; background-color: var(--primary); color: white; font-weight: bold; font-size: 14px;
-        }
-
-        .source-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            padding: 14px 20px;
-            margin-bottom: 10px;
+        .navbar a {
+            color: #e04a58;
             text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.2s;
-        }
-        .source-item:hover {
-            background-color: var(--bg-light);
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .image-frame-placeholder {
-            width: 100%;
-            height: 240px;
-            background-color: var(--bg-light);
-            border: 2px dashed rgba(224, 74, 88, 0.4);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--primary);
             font-weight: bold;
-            font-size: 16px;
+            margin: 0 8px;
+            font-size: 14px;
+        }
+        .main-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .chapter-box {
+            margin-bottom: 60px;
+            padding-top: 40px;
+            border-bottom: 2px dashed #f0f0f0;
+            padding-bottom: 40px;
+        }
+        .tag {
+            color: #e04a58;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        h1 { color: #1a1a1a; font-size: 32px; margin: 5px 0 20px 0; }
+        h2 { color: #1a1a1a; font-size: 22px; margin-top: 30px; }
+        .pink-box {
+            background-color: #fff5f6;
+            border-left: 4px solid #e04a58;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .border-card {
+            border: 2px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .source-link {
+            display: block;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #e04a58;
+            color: #e04a58;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <!-- WELCOME LANDING SCREEN -->
-    <div id="home-landing">
-        <h1 class="landing-title">Albinism</h1>
-        <a href="#ch1" class="start-btn">Start reading &rarr;</a>
+    <!-- TOP NAVIGATION LINKS -->
+    <div class="navbar">
+        <a href="#ch1">Ch 1</a> | 
+        <a href="#ch2">Ch 2</a> | 
+        <a href="#ch3">Ch 3</a> | 
+        <a href="#ch4">Ch 4</a> | 
+        <a href="#ch5">Ch 5</a> | 
+        <a href="#ch6">Ch 6</a> | 
+        <a href="#ch7">Ch 7</a> | 
+        <a href="#ch8">Ch 8</a> | 
+        <a href="#ch9">Sources</a>
     </div>
 
-    <!-- STICKY NAVBAR -->
-    <header class="sticky-nav">
-        <div class="nav-container">
-            <a href="#home-landing" class="nav-logo">Albinism Guide</a>
-            <nav class="menu-links">
-                <a href="#ch1">Ch 1</a>
-                <a href="#ch2">Ch 2</a>
-                <a href="#ch3">Ch 3</a>
-                <a href="#ch4">Ch 4</a>
-                <a href="#ch5">Ch 5</a>
-                <a href="#ch6">Ch 6</a>
-                <a href="#ch7">Ch 7</a>
-                <a href="#ch8">Ch 8</a>
-                <a href="#ch9">Sources</a>
-            </nav>
-        </div>
-    </header>
-
-    <div class="page-container">
+    <div class="main-container">
 
         <!-- CHAPTER 1 -->
-        <div id="ch1" class="chapter-panel">
-            <div class="chapter-tag">Chapter 1</div>
+        <div id="ch1" class="chapter-box">
+            <span class="tag">Chapter 1</span>
             <h1>What is albinism?</h1>
-            <p class="intro-text">Albinism is a group of genetic conditions where the body makes little or no melanin — the pigment that gives colour to your skin, hair and eyes.</p>
+            <p><strong>Albinism</strong> is a group of genetic conditions where the body makes little or no melanin — the pigment that gives colour to your skin, hair and eyes.</p>
             
-            <div class="image-container">
-                <div class="image-frame-placeholder">
-                    <span>📷 Figure 1.1: Melanin Expression Model</span>
-                </div>
-                <div class="image-caption">Skin, hair and eyes are much lighter when the body makes very little melanin.</div>
+            <div class="pink-box">
+                <strong>📷 Figure 1.1: Visual Explanatory Panel</strong><br>
+                Skin, hair and eyes are much lighter when the body lacks natural melanin pigment.
             </div>
 
             <h2>It all comes down to melanin</h2>
-            <p>Melanin is the natural colouring made by special cells in your skin. It decides how dark your skin, hair and eyes are, and it also helps your eyes develop before you are born. When the body makes very little melanin, or none at all, those colours become much lighter. That is albinism.</p>
+            <p>Melanin is a natural colouring made by special cells. It decides how dark your skin, hair, and eyes are, and helps your eyes develop correctly before birth. Albinism is not a disease, you cannot catch it, and it never changes how smart a person is.</p>
+
+            <h2>How common is it?</h2>
+            <p>About 1 in 17,000 to 20,000 people globally have albinism. It affects every race and nation on Earth.</p>
+
+            <div class="border-card">
+                <h3>The Two Main Types:</h3>
+                <p><strong>Oculocutaneous albinism (OCA):</strong> The most common form. It affects the skin, hair, and eyes together.</p>
+                <p><strong>Ocular albinism (OA):</strong> A rarer form that mostly affects the eyes, while skin and hair look normal.</p>
+            </div>
+        </div>
+
+        <!-- CHAPTER 2 -->
+        <div id="ch2" class="chapter-box">
+            <span class="tag">Chapter 2</span>
+            <h1>How is albinism diagnosed?</h1>
+            <p>Albinism is usually noticed very early by doctors or parents — often the moment a baby is born due to very pale skin and white hair.</p>
+
+            <div class="pink-box">
+                <strong>📷 Figure 2.1: Diagnostic Observation</strong><br>
+                Initial checkups monitor skin pigmentation values and involuntary muscle movements.
+            </div>
+
+            <h2>What the eye doctor looks for</h2>
+            <ul>
+                <li><strong>Nystagmus:</strong> Fast, involuntary side-to-side eye movements.</li>
+                <li><strong>Photophobia:</strong> Extreme sensitivity to bright light and sun glare.</li>
+                <li><strong>Strabismus:</strong> Eyes that cross or point in different directions.</li>
+            </ul>
+        </div>
+
+        <!-- CHAPTER 3 -->
+        <div id="ch3" class="chapter-box">
+            <span class="tag">Chapter 3</span>
+            <h1>How can a person get albinism?</h1>
+            <p>Albinism is an inherited genetic condition. You cannot catch it from someone else, and nothing in the environment causes it.</p>
+            
+            <h2>Most parents are carriers</h2>
+            <p>Albinism is an autosomal recessive condition. This means a child must inherit two copies of the changed gene (one from each parent) to have the condition. Parents are usually just carriers, meaning they carry the gene copy but show no signs themselves.</p>
+        </div>
+
+        <!-- CHAPTER 4 -->
+        <div id="ch4" class="chapter-box">
+            <span class="tag">Chapter 4</span>
+            <h1>Signs, symptoms and daily life</h1>
+            <p>People with albinism lead full, active lives, but they must adapt to their environment to protect their eyes and skin day-to-day.</p>
+            
+            <div class="pink-box">
+                <strong>Everyday Habits:</strong> Wearing sunscreens daily, using wide-brimmed hats, sitting near the front of classrooms, and using high-contrast large print text.
+            </div>
+        </div>
+
+        <!-- CHAPTER 5 -->
+        <div id="ch5" class="chapter-box">
+            <span class="tag">Chapter 5</span>
+            <h1>What treatment is there?</h1>
+            <p>There is no cure for albinism, and no medicine can force the body to create melanin. Instead, treatment focuses on management:</p>
+            <ul>
+                <li>Prescription glasses or contacts to optimize low-vision focus.</li>
+                <li>Consistent application of SPF 30+ sunscreens to avoid burns.</li>
+                <li>Regular skin evaluations by dermatologists to watch for changes.</li>
+            </ul>
+        </div>
+
+        <!-- CHAPTER 6 -->
+        <div id="ch6" class="chapter-box">
+            <span class="tag">Chapter 6</span>
+            <h1>Looking after eyes & skin</h1>
+            <p>Proactive physical maintenance prevents long-term cell damage. Protecting the eyes cuts down on severe fatigue, and monitoring UV rays prevents serious skin conditions later in life.</p>
+        </div>
+
+        <!-- CHAPTER 7 -->
+        <div id="ch7" class="chapter-box">
+            <span class="tag">Chapter 7</span>
+            <h1>Community and support</h1>
+            <p>No family has to go through this alone. There are global support systems that provide excellent community guidance:</p>
+            <ul>
+                <li><strong>NOAH:</strong> National Organization for Albinism and Hypopigmentation.</li>
+                <li><strong>Albinism Fellowship:</strong> Group active across the UK and Ireland.</li>
+            </ul>
+        </div>
+
+        <!-- CHAPTER 8 -->
+        <div id="ch8" class="chapter-box">
+            <span class="tag">Chapter 8</span>
+            <h1>More interesting facts</h1>
+            <p>Here are a few quick informational items regarding the condition:</p>
+            <ul>
+                <li>Albinism occurs naturally across the animal kingdom, including birds and marine life.</li>
+                <li>The term comes from the Latin word "albus", which translates directly to "white".</li>
+                <li>June 13 is officially observed as International Albinism Awareness Day.</li>
+            </ul>
+        </div>
+
+        <!-- CHAPTER 9 -->
+        <div id="ch9" class="chapter-box">
+            <span class="tag">Chapter 9</span>
+            <h1>Sources Directory</h1>
+            <p>All information on this site is verified against official medical resource catalogs:</p>
+            <a class="source-link" href="https://medlineplus.gov" target="_blank">MedlinePlus Genetics Reference &rarr;</a>
+            <a class="source-link" href="https://www.nhs.uk" target="_blank">NHS UK Conditions Database &rarr;</a>
+            <a class="source-link" href="https://albinism.org" target="_blank">NOAH Information Portal &rarr;</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
