@@ -1,0 +1,74 @@
+import React from "react";
+import ChapterHeading from "@/components/reader/ChapterHeading";
+import Section from "@/components/reader/Section";
+import Callout from "@/components/reader/Callout";
+import FigureImage from "@/components/reader/FigureImage";
+import { PHOTOS, creditLine } from "@/lib/photos";
+
+const steps = [
+  "A doctor looks closely at the baby's skin, hair and eyes.",
+  "The baby is usually sent to an eye doctor (an ophthalmologist), who looks inside the eyes and checks how well the baby sees.",
+  "Small sticky pads may be placed on the scalp to test how the eyes send signals to the brain. It does not hurt.",
+  "A DNA test can show which type of albinism it is, and which gene is involved.",
+  "Families can talk to a genetic counsellor about what it means for other children they may have.",
+];
+
+export default function Diagnosis() {
+  return (
+    <>
+      <ChapterHeading
+        n={2}
+        title="How is albinism diagnosed?"
+        intro="Albinism is usually noticed very early — often the moment a baby is born."
+      />
+
+      <FigureImage
+        src={PHOTOS.baby.src}
+        alt="A baby with albinism"
+        caption="João Pedro, a baby with albinism. It is often noticed at the very first check-up."
+        credit={creditLine(PHOTOS.baby)}
+      />
+
+      <Section title="First, somebody notices">
+        <p>
+          Newborns with albinism often have very pale skin, white or very light hair, and light-coloured eyes. A nurse
+          or a doctor may spot it during the first check-up.
+        </p>
+        <p>
+          Sometimes it is less obvious at first, especially if the baby's colouring is similar to the rest of the
+          family's. Then it may be noticed later, when a child keeps holding books close to their face or complains
+          about bright light.
+        </p>
+      </Section>
+
+      <Section title="What usually happens, step by step">
+        <ol className="space-y-3">
+          {steps.map((step, index) => (
+            <li key={step} className="flex gap-3">
+              <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-primary font-heading font-extrabold text-primary-foreground">
+                {index + 1}
+              </span>
+              <span>{step}</span>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section title="What the eye doctor looks for">
+        <ul className="list-disc space-y-2 pl-5">
+          <li>Quick side-to-side eye movements that the person cannot control (nystagmus)</li>
+          <li>Eyes that point in different directions (a squint)</li>
+          <li>An iris that is very pale and lets light through</li>
+          <li>Eyes that are sensitive to light</li>
+          <li>The retina — the back of the eye — not developing completely</li>
+          <li>Blurry vision that glasses alone cannot fully fix</li>
+        </ul>
+      </Section>
+
+      <Callout title="Nobody did anything wrong">
+        Albinism is not caused by anything a parent did before or during pregnancy. It is not caused by food, weather,
+        illness or anything in the environment.
+      </Callout>
+    </>
+  );
+}
