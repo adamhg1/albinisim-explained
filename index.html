@@ -73,7 +73,7 @@
 
         /* ------------------ ACTIVE SYSTEM LAYOUTS ------------------ */
         #reader-screen {
-            display: none;
+            display: block; /* Forced active by default to prevent blank stalls */
         }
 
         header.sticky-nav {
@@ -245,15 +245,6 @@
             box-shadow: 0 4px 12px rgba(224, 74, 88, 0.04);
         }
 
-        .project-image {
-            width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 12px;
-            display: block;
-        }
-
         .image-caption {
             font-size: 13px;
             color: var(--text-muted);
@@ -359,3 +350,7 @@
             background: #ffffff;
             border: 2px solid var(--border-color);
             color: var(--text-muted);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
