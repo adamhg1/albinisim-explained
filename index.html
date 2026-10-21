@@ -1,226 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Understanding Albinism</title>
-    <style>
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: #333333;
-            background-color: #ffffff;
-        }
-        /* WELCOME LANDING SCREEN */
-        .home-screen {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: radial-gradient(circle at center, #fff2f4 0%, #ffffff 70%);
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .landing-title {
-            font-size: 72px;
-            font-weight: 900;
-            color: #e04a58;
-            letter-spacing: -1px;
-            margin: 0 0 30px 0;
-            text-transform: uppercase;
-        }
-        .start-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: #e04a58;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 14px 32px;
-            border-radius: 50px;
-            box-shadow: 0 10px 20px rgba(224, 74, 88, 0.2);
-            transition: transform 0.2s, background-color 0.2s;
-        }
-        .start-btn:hover {
-            background-color: #c93b48;
-            transform: translateY(-2px);
-        }
-        /* STICKY NAVBAR */
-        .navbar {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 245, 246, 0.98);
-            backdrop-filter: blur(8px);
-            border-bottom: 2px solid #e04a58;
-            padding: 15px;
-            text-align: center;
-            z-index: 1000;
-        }
-        .navbar a {
-            color: #e04a58;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 6px;
-            font-size: 13px;
-        }
-        .navbar a:hover { text-decoration: underline; }
-        /* CONTAINER LAYOUT */
-        .main-container {
-            max-width: 740px;
-            margin: 0 auto;
-            padding: 30px 20px;
-        }
-        .chapter-box {
-            margin-bottom: 60px;
-            padding-top: 80px;
-            border-bottom: 2px dashed #f0f0f0;
-            padding-bottom: 50px;
-        }
-        .tag {
-            color: #e04a58;
-            font-weight: bold;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        h1 { color: #1a1a1a; font-size: 34px; margin: 5px 0 20px 0; font-weight: 800; }
-        h2 { color: #1a1a1a; font-size: 24px; margin-top: 35px; font-weight: 700; }
-        h3 { color: #e04a58; font-size: 18px; margin-top: 20px; font-weight: 700; }
-        .intro { font-size: 19px; color: #555555; font-weight: 300; margin-bottom: 25px; }
-        /* IMAGES & CARDS */
-        .image-card {
-            border: 2px solid #fff0f1;
-            border-radius: 16px;
-            padding: 12px;
-            margin: 25px 0;
-            background: #ffffff;
-            box-shadow: 0 4px 12px rgba(224, 74, 88, 0.04);
-            text-align: center;
-        }
-        .project-img {
-            width: 100%;
-            height: auto;
-            max-height: 380px;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-        .caption { font-size: 13px; color: #666666; margin-top: 10px; }
-        .pink-box {
-            background-color: #fff5f6;
-            border-left: 4px solid #e04a58;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 4px;
-        }
-        .content-card {
-            border: 2px solid #f0f0f0;
-            border-radius: 16px;
-            padding: 20px;
-            margin: 20px 0;
-            background: #ffffff;
-        }
-        .step-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px; }
-        .step-number {
-            display: flex; height: 28px; width: 28px; flex: none; align-items: center; justify-content: center;
-            border-radius: 50%; background-color: #e04a58; color: white; font-weight: bold; font-size: 14px;
-        }
-        .source-link {
-            display: block; padding: 12px; margin: 10px 0; border: 2px solid #f0f0f0;
-            color: #1a1a1a; text-decoration: none; border-radius: 12px; font-weight: bold; transition: all 0.2s;
-        }
-        .source-link:hover { border-color: #e04a58; color: #e04a58; background: #fff5f6; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding Albinism</title>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; margin: 0; color: #333; background: #fff; }
+  .home-screen {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    height: 100vh; background: radial-gradient(circle at center, #fff2f4 0%, #fff 70%);
+    text-align: center; padding: 20px; box-sizing: border-box;
+  }
+  .landing-title { font-size: clamp(44px, 14vw, 72px); font-weight: 900; color: #e04a58; letter-spacing: -1px; margin: 0 0 30px; text-transform: uppercase; }
+  .start-btn {
+    display: inline-block; background: #e04a58; color: #fff; text-decoration: none; font-size: 18px; font-weight: bold;
+    padding: 14px 32px; border-radius: 50px; box-shadow: 0 10px 20px rgba(224,74,88,.2); transition: transform .2s, background-color .2s;
+  }
+  .start-btn:hover { background: #c93b48; transform: translateY(-2px); }
+  .navbar {
+    position: sticky; top: 0; background: rgba(255,245,246,.98); backdrop-filter: blur(8px);
+    border-bottom: 2px solid #e04a58; padding: 12px; text-align: center; z-index: 1000;
+  }
+  .navbar a { color: #e04a58; text-decoration: none; font-weight: bold; margin: 0 6px; font-size: 13px; display: inline-block; }
+  .navbar a:hover { text-decoration: underline; }
+  .main-container { max-width: 740px; margin: 0 auto; padding: 30px 20px; }
+  .chapter-box { margin-bottom: 40px; padding-top: 80px; border-bottom: 2px dashed #f0f0f0; padding-bottom: 40px; }
+  .tag { color: #e04a58; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+  h1 { color: #1a1a1a; font-size: 34px; margin: 5px 0 20px; font-weight: 800; line-height: 1.2; }
+  h2 { color: #1a1a1a; font-size: 24px; margin-top: 35px; font-weight: 700; }
+  h3 { color: #e04a58; font-size: 18px; margin-top: 20px; font-weight: 700; }
+  .intro { font-size: 19px; color: #555; font-weight: 300; margin-bottom: 25px; }
+  .image-card { border: 2px solid #fff0f1; border-radius: 16px; padding: 20px; margin: 25px 0; background: #fff; box-shadow: 0 4px 12px rgba(224,74,88,.04); text-align: center; }
+  .image-card svg { display: block; width: 100%; height: auto; margin: 0 auto; }
+  .caption { font-size: 13px; color: #666; margin-top: 10px; font-style: italic; }
+  .pink-box { background: #fff5f6; border-left: 4px solid #e04a58; padding: 20px; margin: 25px 0; border-radius: 4px; }
+  .content-card { border: 2px solid #f0f0f0; border-radius: 16px; padding: 20px; margin: 20px 0; background: #fff; }
+  .content-card p:last-child { margin-bottom: 0; }
+  .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .grid-2col { grid-template-columns: 1fr; } }
+  .step-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px; }
+  .step-number { display: flex; height: 28px; width: 28px; flex: none; align-items: center; justify-content: center; border-radius: 50%; background: #e04a58; color: #fff; font-weight: bold; font-size: 14px; }
+  .step-item p { margin: 0; }
+  .fact { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+  .fact:last-child { border-bottom: 0; }
+  .source-link { display: block; padding: 12px; margin: 10px 0; border: 2px solid #f0f0f0; color: #1a1a1a; text-decoration: none; border-radius: 12px; font-weight: bold; transition: all .2s; }
+  .source-link span { display: block; font-weight: normal; font-size: 14px; color: #666; }
+  .source-link:hover { border-color: #e04a58; color: #e04a58; background: #fff5f6; }
+</style>
 </head>
 <body>
 
-    <!-- HOME SCREEN -->
-    <div id="home" class="home-screen">
-        <h1 class="landing-title">Albinism</h1>
-        <a href="#ch1" class="start-btn">Start reading &rarr;</a>
+<div id="home" class="home-screen">
+  <h1 class="landing-title">Albinism</h1>
+  <a href="#ch1" class="start-btn">Start reading &rarr;</a>
+</div>
+
+<div class="navbar">
+  <a href="#home">Home</a> |
+  <a href="#ch1">Ch 1</a> | <a href="#ch2">Ch 2</a> | <a href="#ch3">Ch 3</a> | <a href="#ch4">Ch 4</a> |
+  <a href="#ch5">Ch 5</a> | <a href="#ch6">Ch 6</a> | <a href="#ch7">Ch 7</a> | <a href="#ch8">Ch 8</a> |
+  <a href="#ch9">Sources</a>
+</div>
+
+<div class="main-container">
+
+<!-- CHAPTER 1: NAME -->
+<div id="ch1" class="chapter-box">
+  <span class="tag">Chapter 1</span>
+  <h1>What is the disorder called?</h1>
+  <p class="intro">The disorder is called <strong>albinism</strong>. It is a group of genetic conditions where the body makes little or no melanin, the pigment that colours skin, hair and eyes.</p>
+
+  <div class="image-card">
+    <svg viewBox="0 0 480 200" role="img" aria-label="Illustrated people with albinism" style="display:block;width:100%;height:auto;max-width:480px;margin:0 auto;"><rect width="480" height="200" rx="12" fill="#fff5f6"/><path d="M18 165V125Q18 98 60 98Q102 98 102 125V165Z" fill="#e04a58"/><circle cx="60" cy="56" r="40" fill="#f3ead2"/><circle cx="60" cy="66" r="32" fill="#f6dccf"/><path d="M28 60Q40 36 60 38Q80 36 92 60Q60 48 28 60Z" fill="#f3ead2"/><circle cx="49" cy="64" r="3.5" fill="#5b7fa6"/><circle cx="71" cy="64" r="3.5" fill="#5b7fa6"/><path d="M51 80Q60 88 69 80" stroke="#7a3b3b" stroke-width="2" fill="none"/><text x="60" y="188" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">Child</text><path d="M138 165V125Q138 98 180 98Q222 98 222 125V165Z" fill="#4a7fb0"/><circle cx="180" cy="56" r="40" fill="#e8c88a"/><circle cx="180" cy="66" r="32" fill="#e9b79a"/><path d="M148 60Q160 36 180 38Q200 36 212 60Q180 48 148 60Z" fill="#e8c88a"/><circle cx="169" cy="64" r="3.5" fill="#5b7fa6"/><circle cx="191" cy="64" r="3.5" fill="#5b7fa6"/><path d="M171 80Q180 88 189 80" stroke="#7a3b3b" stroke-width="2" fill="none"/><text x="180" y="188" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">Teenager</text><path d="M258 165V125Q258 98 300 98Q342 98 342 125V165Z" fill="#6b8f5e"/><circle cx="300" cy="56" r="40" fill="#e3c08d"/><circle cx="300" cy="66" r="32" fill="#d9a283"/><path d="M268 60Q280 36 300 38Q320 36 332 60Q300 48 268 60Z" fill="#e3c08d"/><circle cx="289" cy="64" r="3.5" fill="#5b7fa6"/><circle cx="311" cy="64" r="3.5" fill="#5b7fa6"/><path d="M291 80Q300 88 309 80" stroke="#7a3b3b" stroke-width="2" fill="none"/><text x="300" y="188" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">Adult</text><path d="M378 165V125Q378 98 420 98Q462 98 462 125V165Z" fill="#8c5fa8"/><circle cx="420" cy="56" r="40" fill="#f1e6c8"/><circle cx="420" cy="66" r="32" fill="#f3d3c2"/><path d="M388 60Q400 36 420 38Q440 36 452 60Q420 48 388 60Z" fill="#f1e6c8"/><circle cx="409" cy="64" r="3.5" fill="#5b7fa6"/><circle cx="431" cy="64" r="3.5" fill="#5b7fa6"/><path d="M411 80Q420 88 429 80" stroke="#7a3b3b" stroke-width="2" fill="none"/><text x="420" y="188" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">Grandparent</text></svg>
+    <div class="caption">People with albinism come from every background. Skin, hair and eye colour vary from person to person. (Illustration)</div>
+  </div>
+
+  <h2>Where the name comes from</h2>
+  <p>“Albinism” comes from the Latin word <em>albus</em>, meaning white. The name is a little misleading, because many people with albinism have cream, yellow, light brown or even reddish hair and skin rather than pure white. The respectful way to talk about someone is “a person with albinism”, rather than using the older word “albino” as a label.</p>
+
+  <h2>Types and medical names</h2>
+  <div class="grid-2col">
+    <div class="content-card">
+      <h3 style="margin-top:0;">Oculocutaneous albinism (OCA)</h3>
+      <p>The most common type. It affects the skin, hair and eyes. There are at least seven types, OCA1 to OCA7, named after the gene involved.</p>
     </div>
-
-    <!-- STICKY NAVBAR -->
-    <div class="navbar">
-        <a href="#home">Home</a> | 
-        <a href="#ch1">Ch 1</a> | 
-        <a href="#ch2">Ch 2</a> | 
-        <a href="#ch3">Ch 3</a> | 
-        <a href="#ch4">Ch 4</a> | 
-        <a href="#ch5">Ch 5</a> | 
-        <a href="#ch6">Ch 6</a> | 
-        <a href="#ch7">Ch 7</a> | 
-        <a href="#ch8">Ch 8</a> | 
-        <a href="#ch9">Sources</a>
+    <div class="content-card">
+      <h3 style="margin-top:0;">Ocular albinism (OA)</h3>
+      <p>A rarer type that mainly affects the eyes. Skin and hair usually look similar to the rest of the person’s family.</p>
     </div>
+  </div>
+  <p>Rare syndromes such as Hermansky-Pudlak and Chediak-Higashi syndrome also include albinism, along with other health problems.</p>
 
-    <div class="main-container">
+  <h2>How common is it?</h2>
+  <p>About 1 in 17,000 to 20,000 people worldwide have albinism. It is found in every ethnic group, and is more common in some regions. In southern Africa it affects around 1 in 4,000 people.</p>
 
-        <!-- CHAPTER 1 -->
-        <div id="ch1" class="chapter-box">
-            <span class="tag">Chapter 1</span>
-            <h1>What is albinism?</h1>
-            <p class="intro">Albinism is a group of genetic conditions where the body makes little or no melanin — the pigment that gives colour to your skin, hair and eyes.</p>
-            
-            <div class="image-card">
-                <img src="https://wikimedia.org" alt="A child with albinism" class="project-img">
-                <div class="caption">Skin, hair, and eyes are much lighter when the body makes very little melanin.</div>
-            </div>
+  <div class="pink-box">
+    <strong>Word to know: melanin</strong><br>
+    The natural pigment made by special skin cells that gives colour to skin, hair and eyes, and helps the eyes develop before birth.
+  </div>
 
-            <h2>It all comes down to melanin</h2>
-            <p>Melanin is the natural colouring made by special cells in your skin. It decides how dark your skin, hair and eyes are, and it also helps your eyes develop before you are born. When the body makes very little melanin, or none at all, those colours become much lighter. That is albinism.</p>
-            <p>Albinism is not a disease. You cannot catch it, it does not get worse over time, and it does not change how clever someone is.</p>
+  <h2>Where melanin is made</h2>
+  <div class="image-card">
+    <svg viewBox="0 0 440 264" role="img" aria-label="Skin layers diagram">
+      <rect x="20" y="16" width="400" height="54" rx="20" fill="#FFF1F3" stroke="#2D3142" stroke-width="3"/>
+      <text x="42" y="50" font-family="sans-serif" font-size="16" font-weight="700" fill="#2D3142">Top layer of the skin</text>
+      <rect x="20" y="78" width="400" height="100" rx="20" fill="#FFD9DF" stroke="#2D3142" stroke-width="3"/>
+      <text x="42" y="108" font-family="sans-serif" font-size="16" font-weight="700" fill="#2D3142">Where melanin is made</text>
+      <circle cx="90" cy="152" r="9" fill="#E63946"/><circle cx="155" cy="152" r="9" fill="#E63946"/><circle cx="220" cy="152" r="9" fill="#E63946"/><circle cx="285" cy="152" r="9" fill="#E63946"/><circle cx="350" cy="152" r="9" fill="#E63946"/>
+      <rect x="20" y="190" width="400" height="54" rx="20" fill="#FFC1CC" stroke="#2D3142" stroke-width="3"/>
+      <text x="42" y="224" font-family="sans-serif" font-size="16" font-weight="700" fill="#2D3142">Deeper layers of the skin</text>
+    </svg>
+    <div class="caption">Melanin is made in the middle layer of the skin. Less melanin means paler skin, hair and eyes.</div>
+  </div>
+</div>
 
-            <h2>How common is it?</h2>
-            <p>About 1 in 17,000 to 20,000 people around the world have albinism. It happens in every ethnic group and in every country. In parts of Africa it is more common — roughly 1 in 4,000 people in southern Africa.</p>
+<!-- CHAPTER 2: DIAGNOSIS -->
+<div id="ch2" class="chapter-box">
+  <span class="tag">Chapter 2</span>
+  <h1>How is albinism diagnosed?</h1>
+  <p class="intro">Albinism is usually noticed at birth or in early infancy, then confirmed with an eye exam and, often, a genetic test.</p>
 
-            <h2>The two main types</h2>
-            <div class="grid-2col">
-                <div class="content-card">
-                    <h3>Oculocutaneous albinism (OCA)</h3>
-                    <p>The most common type. It affects the skin, the hair and the eyes. There are several forms, and the colouring can be anything from very pale to light brown.</p>
-                </div>
-                <div class="content-card">
-                    <h3>Ocular albinism (OA)</h3>
-                    <p>A rarer type that mostly affects the eyes. The skin and hair can look almost the same as the rest of the family's.</p>
-                </div>
-            </div>
+  <h2>The steps doctors take</h2>
+  <div class="step-item"><div class="step-number">1</div><p><strong>Looking at skin, hair and eye colour.</strong> A doctor compares the child’s colouring with their family’s. Very pale skin or hair can be the first clue.</p></div>
+  <div class="step-item"><div class="step-number">2</div><p><strong>A full eye exam.</strong> An eye doctor (ophthalmologist) checks for nystagmus, light-coloured or see-through irises, an under-developed fovea, and how well the eyes focus. Eye findings are present in every type of albinism.</p></div>
+  <div class="step-item"><div class="step-number">3</div><p><strong>Family history.</strong> Questions about relatives with albinism or eye problems help show how it may be inherited.</p></div>
+  <div class="step-item"><div class="step-number">4</div><p><strong>Genetic testing.</strong> A blood or saliva sample is checked for changes in the genes linked to albinism. This confirms the type and helps families understand the chance of passing it on.</p></div>
 
-            <h2>Skin Structure Layers</h2>
-            <div class="image-card">
-                <svg viewBox="0 0 440 264" style="display: block; width: 100%; height: auto; margin:0 auto;">
-                    <rect x="20" y="16" width="400" height="54" rx="20" fill="#FFF1F3" stroke="#2D3142" stroke-width="3" />
-                    <text x="42" y="50" font-family="sans-serif" font-size="16" font-weight="700" fill="#2D3142">Top layer of the skin</text>
-                    <rect x="20" y="78" width="400" height="100" rx="20" fill="#FFD9DF" stroke="#2D3142" stroke-width="3" />
-                    <text x="42" y="108" font-family="sans-serif" font-size="16" font-weight="700" fill="#2D3142">Where melanin is made</text>
-                    <circle cx="90" cy="152" r="9" fill="#E63946" /><circle cx="155" cy="152" r="9" fill="#E63946" /><circle cx="220" cy="152" r="9" fill="#E63946" /><circle cx="285" cy="152" r="9" fill="#E63946" /><circle cx="350" cy="152" r="9" fill="#E63946" />
-                    <rect x="20" y="190" width="400" height="54" rx="20" fill="#FFC1CC" stroke="#2D3142" stroke-width="3" />
-                    <text x="42" y="224" font-family="sans-serif" font-size="16" font-weight="700" fill="#2D3142">Deeper layers of the skin</text>
-                </svg>
-                <div class="caption">Melanin is made in the middle layer of the skin. Less melanin means paler skin, hair and eyes.</div>
-            </div>
+  <div class="pink-box">
+    <strong>Why the type matters</strong><br>
+    Knowing the exact type helps doctors know whether to look for other health problems, such as the bleeding or infection risks seen in some rare syndromes.
+  </div>
+</div>
 
-            <div class="pink-box">
-                <strong>Word to know: melanin</strong><br>
-                Melanin is the pigment that colours your skin, hair and eyes. It also protects your skin from the sun and helps your eyes develop properly.
-            </div>
-        </div>
+<!-- CHAPTER 3: HOW YOU GET IT -->
+<div id="ch3" class="chapter-box">
+  <span class="tag">Chapter 3</span>
+  <h1>How does a person get albinism?</h1>
+  <p class="intro">Albinism is caused by a change (mutation) in a gene, and in nearly all cases that change is <strong>inherited</strong> from parents. It cannot be caught, and nothing a parent did causes it.</p>
 
-        <!-- CHAPTER 2 -->
-        <div id="ch2" class="chapter-box">
-            <span class="tag">Chapter 2</span>
-            <h1>How is albinism diagnosed?</h1>
-            <p class="intro">Albinism is usually noticed very early — often the moment a baby is born.</p>
+  <h2>A gene mutation, passed down</h2>
+  <p>Several genes (including <em>TYR</em>, <em>OCA2</em>, <em>TYRP1</em>, <em>SLC45A2</em> and <em>GPR143</em>) give the body instructions for making melanin. A mutation in one of them stops it working properly. Because the mutation is in the DNA of every cell, including egg and sperm cells, it can be handed from parent to child. Very rarely a mutation can appear for the first time in a child.</p>
 
-            <div class="image-card">
-                <img src="https://wikimedia.org" alt="Eye examination" class="project-img">
-                <div class="caption">A doctor checking a patient's visual reflexes using a slit lamp microscope.</div>
-            </div>
+  <h2>Autosomal recessive inheritance</h2>
+  <p>Most types of OCA need <strong>two</strong> changed copies of a gene, one from each parent. A parent with just one changed copy is a carrier, and usually has no signs of albinism. Many families learn they are carriers only after a child is born with albinism.</p>
+  <div class="image-card">
+    <svg viewBox="0 0 440 170" role="img" aria-label="Inheritance chances for two carrier parents">
+      <g font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">
+        <text x="220" y="22" font-weight="bold">Two carrier parents, every pregnancy</text>
+        <rect x="20" y="40" width="120" height="76" rx="12" fill="#fff" stroke="#e04a58" stroke-width="2"/>
+        <text x="80" y="72" font-size="22" font-weight="bold" fill="#e04a58">1 in 4</text><text x="80" y="98">has albinism</text>
+        <rect x="160" y="40" width="120" height="76" rx="12" fill="#fff5f6" stroke="#e04a58" stroke-width="2"/>
+        <text x="220" y="72" font-size="22" font-weight="bold" fill="#e04a58">2 in 4</text><text x="220" y="98">are carriers</text>
+        <rect x="300" y="40" width="120" height="76" rx="12" fill="#fff" stroke="#e04a58" stroke-width="2"/>
+        <text x="360" y="72" font-size="22" font-weight="bold" fill="#e04a58">1 in 4</text><text x="360" y="98">has no change</text>
+        <text x="220" y="146" fill="#666" font-size="12">The chances are the same each time, whatever happened before.</text>
+      </g>
+    </svg>
+    <div class="caption">Chances for each child when both parents carry one changed copy of an OCA gene.</div>
+  </div>
 
-            <h2>First, somebody notices</h2>
+  <h2>X-linked inheritance</h2>
+  <p>The most common type of ocular albinism is carried on the X chromosome. It mostly affects males and is usually passed on by mothers who are carriers.</p>
+</div>
+
+<!-- CHAPTER 4: SIGNS AND SYMPTOMS -->
+<div id="ch4" class="chapter-box">
+  <span class="tag">Chapter 4</span>
+  <h1>Main signs and symptoms</h1>
+  <p class="intro">Albinism affects colouring, the eyes and sun sensitivity. It does not affect intelligence or lifespan in most types.</p>
+
+  <h2>Skin and hair</h2>
+  <ul>
+    <li>Very light skin, which burns easily and may freckle instead of tanning</li>
+    <li>White, cream, yellow, light brown or reddish hair</li>
+    <li>Higher risk of sunburn and, over time, skin cancer</li>
+  </ul>
+
+  <h2>Eyes and vision</h2>
+  <ul>
+    <li><strong>Nystagmus:</strong> small, involuntary eye movements</li>
+    <li><strong>Photophobia:</strong> discomfort or pain in bright light</li>
+    <li><strong>Reduced sharpness of vision</strong>, often not fully fixed by glasses</li>
+    <li><strong>Strabismus:</strong> eyes that turn inward or outward</li>
+    <li><strong>Light blue, grey or brown eyes</strong>, with irises that let light through</li>
+    <li>Trouble with depth perception, or an unusual head tilt to see better</li>
+  </ul>
+
+  <div class="image-card">
+    <svg viewBox="0 0 420 170" role="img" aria-label="Eye diagram showing the iris, pupil and retina">
+      <g font-family="sans-serif" font-size="13" fill="#333">
+        <ellipse cx="140" cy="85" rx="100" ry="58" fill="#fff" stroke="#2D3142" stroke-width="3"/>
+        <circle cx="140" cy="85" r="36" fill="#bcd3e6" stroke="#2D3142" stroke-width="2"/>
+        <circle cx="140" cy="85" r="15" fill="#2D3142"/>
+        <path d="M130 78 q5-6 12-2" stroke="#fff" stroke-width="3" fill="none"/>
+        <path d="M290 40 L180 72" stroke="#e04a58" stroke-width="2"/><text x="296" y="44">Iris: light, lets light through</text>
+        <path d="M290 100 L156 88" stroke="#e04a58" stroke-width="2"/><text x="296" y="104">Pupil</text>
+        <text x="296" y="150" fill="#666">Less melanin means more glare</text>
+      </g>
+    </svg>
+    <div class="caption">With little melanin in the iris, extra light enters the eye, which is why bright light is uncomfortable.</div>
+  </div>
+</div>
+
+<!-- CHAPTER 5: WHAT IT'S LIKE -->
+<div id="ch5" class="chapter-box">
+  <span class="tag">Chapter 5</span>
+  <h1>What is it like to have albinism?</h1>
+  <p class="intro">Most people with albinism go to school, work, play sport and have families like everyone else. A few adjustments make everyday life easier.</p>
+
+  <div class="image-card">
+    <svg viewBox="0 0 420 200" role="img" aria-label="Illustrated people with albinism" style="display:block;width:100%;height:auto;max-width:420px;margin:0 auto;"><rect width="420" height="200" rx="12" fill="#fff5f6"/><path d="M28 165V125Q28 98 70 98Q112 98 112 125V165Z" fill="#e04a58"/><circle cx="70" cy="56" r="40" fill="#f3ead2"/><circle cx="70" cy="66" r="32" fill="#f6dccf"/><path d="M38 60Q50 36 70 38Q90 36 102 60Q70 48 38 60Z" fill="#f3ead2"/><rect x="46" y="58" width="20" height="11" rx="4" fill="#222"/><rect x="74" y="58" width="20" height="11" rx="4" fill="#222"/><path d="M66 62H74" stroke="#222" stroke-width="2"/><path d="M61 80Q70 88 79 80" stroke="#7a3b3b" stroke-width="2" fill="none"/><ellipse cx="70" cy="40" rx="50" ry="8" fill="#c9a36a"/><path d="M40 40Q40 10 70 10Q100 10 100 40Z" fill="#c9a36a"/><text x="70" y="188" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">Hat and sunglasses</text><path d="M168 165V125Q168 98 210 98Q252 98 252 125V165Z" fill="#4a7fb0"/><circle cx="210" cy="56" r="40" fill="#e3c08d"/><circle cx="210" cy="66" r="32" fill="#d9a283"/><path d="M178 60Q190 36 210 38Q230 36 242 60Q210 48 178 60Z" fill="#e3c08d"/><rect x="186" y="58" width="20" height="11" rx="4" fill="#222"/><rect x="214" y="58" width="20" height="11" rx="4" fill="#222"/><path d="M206 62H214" stroke="#222" stroke-width="2"/><path d="M201 80Q210 88 219 80" stroke="#7a3b3b" stroke-width="2" fill="none"/><text x="210" y="188" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">Tinted lenses</text><path d="M308 165V125Q308 98 350 98Q392 98 392 125V165Z" fill="#6b8f5e"/><circle cx="350" cy="56" r="40" fill="#e8c88a"/><circle cx="350" cy="66" r="32" fill="#e9b79a"/><path d="M318 60Q330 36 350 38Q370 36 382 60Q350 48 318 60Z" fill="#e8c88a"/><circle cx="339" cy="64" r="3.5" fill="#5b7fa6"/><circle cx="361" cy="64" r="3.5" fill="#5b7fa6"/><path d="M341 80Q350 88 359 80" stroke="#7a3b3b" stroke-width="2" fill="none"/><ellipse cx="350" cy="40" rx="50" ry="8" fill="#c9a36a"/><path d="M320 40Q320 10 350 10Q380 10 380 40Z" fill="#c9a36a"/><text x="350" y="188" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">Wide-brim hat</text></svg>
+    <div class="caption">Hats, sunglasses and tinted lenses are everyday tools. (Illustration)</div>
+  </div>
+
+  <h2>Seeing the world</h2>
+  <p>Vision is blurry rather than dark. Many people hold things close, sit near the front of the classroom, or use a magnifier or screen zoom. Faces across a room can be hard to recognise, and bright sunshine can feel painful.</p>
+
+  <h2>Sun and skin</h2>
+  <p>Planning ahead is part of daily life: sunscreen, protective clothing and shade. Outdoor activities are still possible, often at cooler times of day.</p>
+
+  <h2>Being noticed</h2>
+  <p>Looking different can attract stares, nicknames or questions. Some people feel confident, others find it tiring, and talking with others with albinism often helps. In some countries, myths lead to real discrimination and even violence, so awareness and support matter.</p>
+
+  <div class="pink-box">
+    <strong>The important point</strong><br>
+    Albinism changes how a person sees and how they handle the sun. It does not change who they are or what they can achieve.
+  </div>
+</div>
+
+<!-- CHAPTER 6: TREATMENT -->
+<div id="ch6" class="chapter-box">
+  <span class="tag">Chapter 6</span>
+  <h1>Is there treatment?</h1>
+  <p class="intro">There is no cure for albinism, because the gene change cannot yet be reversed. But symptoms can be managed well, especially when care starts early.</p>
+
+  <div class="content-card"><h3 style="margin-top:0;">Vision care</h3><p>Regular eye exams, glasses or contact lenses, tinted lenses and sunglasses, magnifiers, large-print and screen-reading tools. Some children have surgery for strabismus. A few people use medication or surgery for nystagmus, with mixed results.</p></div>
+  <div class="content-card"><h3 style="margin-top:0;">Skin protection</h3><p>Broad-spectrum sunscreen (SPF 30 or higher), long sleeves, wide-brimmed hats, shade, and a skin check by a dermatologist at least once a year. Skin cancer found early is usually very treatable.</p></div>
+  <div class="content-card"><h3 style="margin-top:0;">Support</h3><p>Help in school (large print, seating, extra time), genetic counselling for families, and support groups for emotional wellbeing.</p></div>
+  <div class="content-card"><h3 style="margin-top:0;">Research</h3><p>Scientists are studying gene therapy and other approaches, but none are standard treatments yet.</p></div>
+</div>
+
+<!-- CHAPTER 7: OTHER INFO -->
+<div id="ch7" class="chapter-box">
+  <span class="tag">Chapter 7</span>
+  <h1>Other important things to know</h1>
+
+  <h2>Myths and facts</h2>
+  <p><strong>Myth:</strong> People with albinism have red eyes. <strong>Fact:</strong> Eyes are usually blue, grey or brown. They can look reddish in some light.</p>
+  <p><strong>Myth:</strong> Albinism is contagious. <strong>Fact:</strong> It is genetic and cannot spread between people.</p>
+  <p><strong>Myth:</strong> Body parts of people with albinism hold magic powers. <strong>Fact:</strong> This is false and dangerous. People have been attacked because of this belief, mainly in parts of East Africa.</p>
+
+  <h2>Albinism in animals</h2>
+  <p>Albinism also occurs in animals, such as snakes, rabbits and alligators. An animal with albinism has pink or red eyes, whereas an animal that is simply white (called leucistic) keeps dark eyes.</p>
+
+  <h2>International Albinism Awareness Day</h2>
+  <p>The United Nations marks 13 June each year to raise awareness and protect the rights of people with albinism.</p>
+</div>
+
+<!-- CHAPTER 8: TEN FACTS -->
+<div id="ch8" class="chapter-box">
+  <span class="tag">Chapter 8</span>
+  <h1>Ten interesting facts</h1>
+  <div class="content-card">
+    <div class="fact"><div class="step-number">1</div><p>About 1 in 17,000 to 20,000 people worldwide have albinism.</p></div>
+    <div class="fact"><div class="step-number">2</div><p>It affects people of every ethnic group and in every country.</p></div>
+    <div class="fact"><div class="step-number">3</div><p>The name comes from the Latin <em>albus</em>, meaning “white”.</p></div>
+    <div class="fact"><div class="step-number">4</div><p>Hair can be white, yellow, light brown or even reddish, not only white.</p></div>
+    <div class="fact"><div class="step-number">5</div><p>Every type of albinism affects the eyes and vision.</p></div>
+    <div class="fact"><div class="step-number">6</div><p>The eyes are usually blue, grey or brown, not red.</p></div>
+    <div class="fact"><div class="step-number">7</div><p>Two carrier parents have a 1 in 4 chance of having a child with albinism with each pregnancy.</p></div>
+    <div class="fact"><div class="step-number">8</div><p>Albinism does not affect intelligence, and it is not contagious.</p></div>
+    <div class="fact"><div class="step-number">9</div><p>Vision does not usually get worse with age.</p></div>
+    <div class="fact"><div class="step-number">10</div><p>13 June is International Albinism Awareness Day.</p></div>
+  </div>
+</div>
+
+<!-- CHAPTER 9: SOURCES -->
+<div id="ch9" class="chapter-box" style="border-bottom:0;">
+  <span class="tag">Chapter 9</span>
+  <h1>Sources</h1>
+  <a class="source-link" href="https://www.albinism.org" target="_blank" rel="noopener">NOAH: National Organization for Albinism and Hypopigmentation<span>Information and support for people and families</span></a>
+  <a class="source-link" href="https://medlineplus.gov/genetics/condition/oculocutaneous-albinism/" target="_blank" rel="noopener">MedlinePlus Genetics: Oculocutaneous albinism<span>US National Library of Medicine</span></a>
+  <a class="source-link" href="https://albinism.org.uk" target="_blank" rel="noopener">The Albinism Fellowship (UK)<span>Support and community</span></a>
+  <a class="source-link" href="https://www.underthesamesun.com" target="_blank" rel="noopener">Under the Same Sun<span>Protecting people with albinism from discrimination</span></a>
+</div>
+
+</div>
+</body>
+</html>
