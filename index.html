@@ -28,7 +28,7 @@
         }
 
         /* ------------------ HOME LANDING SCREEN ------------------ */
-        #landing-screen {
+        #landing {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -61,8 +61,6 @@
             padding: 14px 32px;
             border-radius: 50px;
             box-shadow: 0 10px 20px rgba(224, 74, 88, 0.2);
-            cursor: pointer;
-            border: none;
             transition: transform 0.2s, background-color 0.2s;
         }
 
@@ -71,11 +69,7 @@
             transform: translateY(-2px);
         }
 
-        /* ------------------ SYSTEM INTERFACE READER ------------------ */
-        #reader-screen {
-            display: none; /* Safely managed via script */
-        }
-
+        /* ------------------ STICKY NAVBAR ------------------ */
         header.sticky-nav {
             position: sticky;
             top: 0;
@@ -99,80 +93,21 @@
             font-weight: bold;
             color: var(--primary);
             text-decoration: none;
-            cursor: pointer;
         }
 
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .chapter-indicator {
-            font-size: 13px;
-            font-weight: bold;
-            color: var(--text-muted);
-        }
-
-        .menu-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-btn {
-            background-color: #ffffff;
-            border: 2px solid rgba(224, 74, 88, 0.4);
+        nav.menu-links a {
             color: var(--primary);
-            font-weight: bold;
-            padding: 6px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #ffffff;
-            min-width: 255px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            border: 2px solid var(--border-color);
-            border-radius: 16px;
-            z-index: 101;
-            margin-top: 5px;
-            overflow: hidden;
-        }
-
-        .dropdown-content a {
-            color: var(--text-dark);
-            padding: 10px 16px;
             text-decoration: none;
-            display: block;
+            font-weight: bold;
             font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
+            margin-left: 15px;
         }
 
-        .dropdown-content a:hover {
-            background-color: var(--bg-light);
-            color: var(--primary);
+        nav.menu-links a:hover {
+            text-decoration: underline;
         }
 
-        .progress-bar-container {
-            width: 100%;
-            height: 4px;
-            background-color: var(--border-color);
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            width: 11.11%;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        /* ------------------ CONTENT BLOCKS ------------------ */
+        /* ------------------ CONTENT BOARDS ------------------ */
         main.content-wrapper {
             max-width: 800px;
             margin: 0 auto;
@@ -181,7 +116,10 @@
         }
 
         .chapter-panel {
-            display: none;
+            margin-bottom: 80px;
+            padding-top: 60px;
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 60px;
         }
 
         .chapter-tag {
@@ -326,37 +264,55 @@
             color: var(--primary);
             font-weight: bold;
         }
+    </style>
+</head>
+<body>
 
-        /* ------------------ FOOTER FLOW CONTROLS ------------------ */
-        footer.nav-footer {
-            margin-top: 60px;
-            padding-top: 25px;
-            border-top: 2px dashed var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    <!-- HOME LANDING SCREEN -->
+    <div id="landing">
+        <h1 class="landing-title">Albinism</h1>
+        <a href="#ch1" class="start-btn">Start reading &rarr;</a>
+    </div>
 
-        .prev-chapter-btn {
-            background: #ffffff;
-            border: 2px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .prev-chapter-btn:hover {
-            border-color: var(--text-muted);
-            color: var(--text-dark);
-        }
+    <!-- STICKY NAVBAR -->
+    <header class="sticky-nav">
+        <div class="nav-container">
+            <a href="#landing" class="nav-logo">Albinism Guide</a>
+            <nav class="menu-links">
+                <a href="#ch1">Ch 1</a>
+                <a href="#ch2">Ch 2</a>
+                <a href="#ch3">Ch 3</a>
+                <a href="#ch4">Ch 4</a>
+                <a href="#ch5">Ch 5</a>
+                <a href="#ch6">Ch 6</a>
+                <a href="#ch7">Ch 7</a>
+                <a href="#ch8">Ch 8</a>
+                <a href="#ch9">Sources</a>
+            </nav>
+        </div>
+    </header>
 
-        .next-chapter-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
+    <main class="content-wrapper">
+
+        <!-- CHAPTER 1 -->
+        <div id="ch1" class="chapter-panel">
+            <div class="chapter-tag">Chapter 1</div>
+            <h1>What is albinism?</h1>
+            <p class="intro-text">Albinism is a group of genetic conditions where the body makes little or no melanin — the pigment that gives colour to your skin, hair and eyes.</p>
+            
+            <div class="image-container">
+                <div class="placeholder-box"><span>📷 Medical Visual Record Panel</span></div>
+                <div class="image-caption">Skin, hair and eyes are much lighter when the body makes very little melanin.</div>
+            </div>
+
+            <h2>It all comes down to melanin</h2>
+            <p>Melanin is the natural colouring made by special cells in your skin. It decides how dark your skin, hair and eyes are, and it also helps your eyes develop before you are born. When the body makes very little melanin, or none at all, those colours become much lighter. That is albinism.</p>
+            <p>Albinism is not a disease. You cannot catch it, it does not get worse over time, and it does not change how clever someone is.</p>
+
+            <h2>How common is it?</h2>
+            <p>About 1 in 17,000 to 20,000 people around the world have albinism. It happens in every ethnic group and in every country. In parts of Africa it is more common — roughly 1 in 4,000 people in southern Africa.</p>
+
+            <h2>The two main types</h2>
+            <div class="grid-2col">
+                <div class="content-card">
+                    <h3 style="color:var(--primary); margin-top:0;">Oculocutaneous albinism (OCA)</h3>
